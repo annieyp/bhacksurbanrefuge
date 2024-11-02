@@ -21,17 +21,19 @@
 </html>
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
 <script>
     //map initialization
-    var map = L.map('map').setView([42.3509,-71.1089], 13);
+    var map = L.map('map').setView([42.3509,-71.1089], 12);
 
-    //base osm layer
+    //base osm layer 
     var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     osm.addTo(map)
 
+<<<<<<< HEAD
     //osm layer education 
     var education =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -104,33 +106,54 @@ var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     food.addTo(map)
 
     //marker
+=======
+    //all markers
+>>>>>>> 61b2649 (base code for now)
     var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
     var popup = singleMarker.bindPopup('This is Boston').openPopup();
     popup.addTo(map);
 
+<<<<<<< HEAD
     var cities = L.layerGroup([singleMarker]);
 
 
 
+=======
+    var ilc = L.marker([42.427132, -71.067299]).addTo(map);
+    var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
+    popup1.addTo(map);
+
+    //marker groups
+    //var littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
+       // denver = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
+       // aurora = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
+        //golden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
+
+    //var citywide = L.layerGroup([littleton, denver, aurora, golden]);
+>>>>>>> 61b2649 (base code for now)
 
     //layer controller
-    var baseMaps = {
-        "Base": osm,
-        "Education": education,
-        "Cash Assistance": cash,
-        'Employment': employment,
-        'Food': food,
-        "Healthcare": healthcare,
-        "Housing/Shelter": hs,
-        "Legal": legal,
-        "Community Education": communityEd,
-        "Mental Health Services": mentalHealth,
-        "Case Management": caseManage
-    };
+
+    //var baseMaps = {
+        //"Base": osm
+    //};
     var overlayMaps = {
-        "Marker": singleMarker
+    "Citywide": ilc,
+    "Greater Boston": ilc,
+    "Allston": ilc,
+    "Back Bay": singleMarker,
+    "Bay Village": ilc,
+    "Beacon Hill": ilc,
+    "Brighton": ilc,
+    "Charlestown": ilc,
     };
 
+<<<<<<< HEAD
     // map.removeLayer(singleMarker)
 
     L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+=======
+var layerControl = L.control.layers(overlayMaps).addTo(map);
+
+</script>
+>>>>>>> 61b2649 (base code for now)
