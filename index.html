@@ -7,10 +7,6 @@
     <title>Project with Tabs</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
-    <style>
-        <head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Cocomat+Pro:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
@@ -66,7 +62,6 @@
             height: 50px;
             border-radius: 25px;
             background: linear-gradient(to right, #6fb07f, #86c4fa);
-            position: relative;
             border: 2px solid #54b3d6;
             color: white;
             font-size: 16px;
@@ -198,68 +193,17 @@
                 opacity: 1;
             }
         }
-  
-        #map {
-            width: 60%; 
-            height: 70vh; 
-            margin: 20px auto; 
-            float: left
-        }
-        #addLocationForm {
-            margin: 20px;
-            text-align: center;
-        }
-
-        /* tab style */
-        .tab {
-            display: flex;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            border-bottom: none;
-        }
-        .tab button {
-            background-color: inherit;
-            border: none;
-            outline: none;
-            padding: 10px 20px;
-            transition: background-color 0.3s;
-        }
-        .tab button:hover {
-            background-color: #ddd;
-        }
-        .tab button.active {
-            background-color: #ccc;
-        }
-        /* stuff in tab */
-        .tab-content {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        /* .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 40%;
-        } */
     </style>
 </head>
 <body>
-    <!-- title-->
+    <!-- title -->
     <h1 style="text-align: center; margin-top: 20px; color: #1f7ecb; font-family: sans-serif;">The Project</h1>
 
     <!-- tab nav -->
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Map')">Map</button>
         <button class="tablinks" onclick="openTab(event, 'DigitalResources')">Digital Resources</button>
-        <button class="tablinks" onclick ="openTab(event,  'About')">About Us</button>
-
+        <button class="tablinks" onclick="openTab(event, 'About')">About Us</button>
     </div>
 
     <!-- map tab -->
@@ -291,216 +235,17 @@
     </div>
 
     <!-- about urban refuge tab -->
-<div id="About" class="tab-content">
-    <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">About Urban Refuge</h2>
-    <header>
-        <img src="images/urbanRefugeLogo.png" alt="Urban Refuge Logo" id="logo" class="center" width="300" height="300">
-    </header>
-    <p>
-        Put all the Urban Refuge description here or add an image.
-    </p>
-</div>
-
-
+    <div id="About" class="tab-content">
+        <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">About Urban Refuge</h2>
+        <header>
+            <img src="images/urbanRefugeLogo.png" alt="Urban Refuge Logo" id="logo" class="center" width="300" height="300">
+        </header>
+        <p>
+            Put all the Urban Refuge description here or add an image.
+        </p>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <script>
-        // open tab
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            
-            // hide rest
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            
-            // remove active
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            
-            // show current tab
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
+    <script
 
-        // default active
-        document.querySelector(".tab button").click();
-
-        // Map initialization
-        var map = L.map('map').setView([42.3509,-71.1089], 12);
-
-        // Base OSM layer 
-        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        osm.addTo(map);
-
-        // All markers
-        var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
-        var popup = singleMarker.bindPopup('This is Boston').openPopup();
-        popup.addTo(map);
-
-        var ilc = L.marker([42.427132, -71.067299]).addTo(map);
-        var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
-        popup1.addTo(map);
-
-        // Add user location function
-        function addLocation() {
-            document.getElementById('addLocationBtn').addEventListener('click', function () {
-                var name = document.getElementById('locationName').value;
-                var lat = parseFloat(document.getElementById('latitude').value);
-                var lng = parseFloat(document.getElementById('longitude').value);
-                var description = document.getElementById('description').value;
-
-                if (name && !isNaN(lat) && !isNaN(lng) && description) {
-                    var newMarker = L.marker([lat, lng])
-                        .bindPopup(`<b>${name}</b><br>${description}`)
-                        .addTo(map);
-
-                    alert('Location added successfully!');
-                } else {
-                    alert('Please fill in all fields with valid data.');
-                }
-            });
-        }
-        addLocation();
-    </script>
-</body>
-</html>
-
-
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-<script>
-    //map initialization
-    var map = L.map('map').setView([42.3509,-71.1089], 12);
-
-    //base osm layer 
-    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    osm.addTo(map)
-
-    //osm layer education 
-    var education =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    education.addTo(map)
-
-    //osm layer legal
-    var legal =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    legal.addTo(map)
-
-    //osm layer housing/shelter
-    var hs =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    hs.addTo(map)
-
-    //osm layer cash assistance
-    var cash =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    cash.addTo(map)
-
-//osm layer employment
-var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    employment.addTo(map)
-
-    //osm layer healthcare
-    var healthcare =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    healthcare.addTo(map)
-
-    //osm layer community education
-    var communityEd =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    communityEd.addTo(map)
-
-    //osm layer mental health services
-    var mentalHealth =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    mentalHealth.addTo(map)
-
-    // git merge mai n
-    //osm layer case management
-    var casemanage =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    casemanage.addTo(map)
-
-    //osm layer food
-    var food =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    food.addTo(map)
-
-    //marker
-
-    //all markers
-    var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
-    var popup = singleMarker.bindPopup('This is Boston').openPopup();
-    popup.addTo(map);
-
-    var cities = L.layerGroup([singleMarker]);
-
-
-    var ilc = L.marker([42.427132, -71.067299]).addTo(map);
-    var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
-    popup1.addTo(map);
-
-    //marker groups
-    //var littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
-       // denver = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
-       // aurora = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
-        //golden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
-
-    //var citywide = L.layerGroup([littleton, denver, aurora, golden]);
-
-    //layer controller
-
-    //var baseMaps = {
-        //"Base": osm
-    //};
-    var overlayMaps = {
-    "Citywide": ilc,
-    "Greater Boston": ilc,
-    "Allston": ilc,
-    "Back Bay": singleMarker,
-    "Bay Village": ilc,
-    "Beacon Hill": ilc,
-    "Brighton": ilc,
-    "Charlestown": ilc,
-    };
-
-
-    // map.removeLayer(singleMarker)
-
-    L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-
-var layerControl = L.control.layers(overlayMaps).addTo(map);
-
-</script>
