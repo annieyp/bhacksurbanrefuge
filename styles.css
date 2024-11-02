@@ -1,17 +1,13 @@
 #map {
-    float: left;
-    padding: 10px;      /* creates boundary */
-    border: 1px solid #ccc;
-
     width: 60%; 
     height: 70vh; 
     margin: 20px auto; 
+    float: left
 }
 #addLocationForm {
     margin: 20px;
     text-align: center;
 }
-
 /* tab style */
 .tab {
     display: flex;
@@ -44,3 +40,9 @@
 .tab-content.active {
     display: block;
 }
+/* .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+} */
