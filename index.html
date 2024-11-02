@@ -25,16 +25,108 @@
     //map initialization
     var map = L.map('map').setView([42.3509,-71.1089], 13);
 
-    //osm layer
-    var osm =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //base osm layer
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     osm.addTo(map)
 
+    //osm layer education 
+    var education =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    education.addTo(map)
+
+    //osm layer legal
+    var legal =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    legal.addTo(map)
+
+    //osm layer housing/shelter
+    var hs =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    hs.addTo(map)
+
+    //osm layer cash assistance
+    var cash =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    cash.addTo(map)
+
+//osm layer employment
+var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    employment.addTo(map)
+
+    //osm layer healthcare
+    var healthcare =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    healthcare.addTo(map)
+
+    //osm layer community education
+    var communityEd =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    communityEd.addTo(map)
+
+    //osm layer mental health services
+    var mentalHealth =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    mentalHealth.addTo(map)
+
+    //osm layer case management
+    var casemanage =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    casemanage.addTo(map)
+
+    //osm layer food
+    var food =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    food.addTo(map)
+
     //marker
     var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
     var popup = singleMarker.bindPopup('This is the Boston').openPopup();
     popup.addTo(map);
+
+    //layer controller
+    var baseMaps = {
+        "Base": osm,
+        "Education": education,
+        "Cash Assistance": cash,
+        'Employment': employment,
+        'Food': food,
+        "Healthcare": healthcare,
+        "Housing/Shelter": hs,
+        "Legal": legal,
+        "Community Education": communityEd,
+        "Mental Health Services": mentalHealth,
+        "Case Management": caseManage
+    };
+    var overlayMaps = {
+        "Marker": singleMarker
+    };
+
+    // map.removeLayer(singleMarker)
+
+    L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
 
 </script>
