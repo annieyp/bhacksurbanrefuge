@@ -33,92 +33,11 @@
 
     osm.addTo(map)
 
-<<<<<<< HEAD
-    //osm layer education 
-    var education =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    education.addTo(map)
-
-    //osm layer legal
-    var legal =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    legal.addTo(map)
-
-    //osm layer housing/shelter
-    var hs =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    hs.addTo(map)
-
-    //osm layer cash assistance
-    var cash =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    cash.addTo(map)
-
-//osm layer employment
-var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    employment.addTo(map)
-
-    //osm layer healthcare
-    var healthcare =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    healthcare.addTo(map)
-
-    //osm layer community education
-    var communityEd =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    communityEd.addTo(map)
-
-    //osm layer mental health services
-    var mentalHealth =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    mentalHealth.addTo(map)
-
-    // git merge mai n
-    //osm layer case management
-    var casemanage =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    casemanage.addTo(map)
-
-    //osm layer food
-    var food =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    food.addTo(map)
-
-    //marker
-=======
     //all markers
->>>>>>> 61b2649 (base code for now)
     var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
     var popup = singleMarker.bindPopup('This is Boston').openPopup();
     popup.addTo(map);
 
-<<<<<<< HEAD
-    var cities = L.layerGroup([singleMarker]);
-
-
-
-=======
     var ilc = L.marker([42.427132, -71.067299]).addTo(map);
     var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
     popup1.addTo(map);
@@ -130,7 +49,6 @@ var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         //golden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
 
     //var citywide = L.layerGroup([littleton, denver, aurora, golden]);
->>>>>>> 61b2649 (base code for now)
 
     //layer controller
 
@@ -148,12 +66,6 @@ var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     "Charlestown": ilc,
     };
 
-<<<<<<< HEAD
-    // map.removeLayer(singleMarker)
-
-    L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-=======
 var layerControl = L.control.layers(overlayMaps).addTo(map);
 
 </script>
->>>>>>> 61b2649 (base code for now)
