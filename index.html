@@ -33,7 +33,6 @@
 
     osm.addTo(map)
 
-<<<<<<< HEAD
     //osm layer education 
     var education =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -105,20 +104,14 @@ var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
     food.addTo(map)
 
-    //marker
-=======
-    //all markers
->>>>>>> 61b2649 (base code for now)
     var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
     var popup = singleMarker.bindPopup('This is Boston').openPopup();
     popup.addTo(map);
 
-<<<<<<< HEAD
     var cities = L.layerGroup([singleMarker]);
 
 
 
-=======
     var ilc = L.marker([42.427132, -71.067299]).addTo(map);
     var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
     popup1.addTo(map);
@@ -130,7 +123,6 @@ var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         //golden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
 
     //var citywide = L.layerGroup([littleton, denver, aurora, golden]);
->>>>>>> 61b2649 (base code for now)
 
     //layer controller
 
@@ -148,12 +140,9 @@ var employment =L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     "Charlestown": ilc,
     };
 
-<<<<<<< HEAD
     // map.removeLayer(singleMarker)
 
     L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-=======
 var layerControl = L.control.layers(overlayMaps).addTo(map);
 
 </script>
->>>>>>> 61b2649 (base code for now)
