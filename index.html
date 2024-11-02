@@ -32,4 +32,9 @@
 
     osm.addTo(map)
 
+    //marker
+    var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
+    var popup = singleMarker.bindPopup('This is the Boston').openPopup();
+    popup.addTo(map);
+
 </script>
