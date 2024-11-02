@@ -7,16 +7,210 @@
     <title>Project with Tabs</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<<<<<<< HEAD
 </head>
 <body>
     <h1 style="text-align: center; margin-top: 20px; color: #1f7ecb; font-family: sans-serif;">The Refugee Project</h1>
+=======
+    <link href="https://fonts.googleapis.com/css2?family=Cocomat+Pro:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cocomat Pro', sans-serif;
+            background: linear-gradient(to bottom, #f2f2f2, #e0e0e0);
+            color: #1f7ecb;
+            text-transform: uppercase;
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, p, label, button, a {
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #1f7ecb;
+        }
+        h2 {
+            color: #86c4fa;
+        }
+        a {
+            box-shadow: inset 0 0 0 0 #54b3d6;
+            color: #54b3d6;
+            padding: 0 .25rem;
+            margin: 0 -.25rem;
+            transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #fff;
+            box-shadow: inset 200px 0 0 0 #54b3d6;
+        }
+        #map {
+            width: 60%; 
+            height: 70vh; 
+            margin: 20px auto; 
+            float: left;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #addLocationForm {
+            margin: 20px;
+            text-align: center;
+        }
+        button {
+            border-width: 1px;
+            width: 200px;
+            height: 50px;
+            border-radius: 25px;
+            background: linear-gradient(to right, #6fb07f, #86c4fa);
+            border: 2px solid #54b3d6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+        button:hover {
+            background: linear-gradient(to right, #54b3d6, #6fb07f);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        button:focus {
+            -webkit-animation: extend 1s ease-in-out;
+            animation: extend 1s ease-in-out;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+        button:focus > span {
+            -webkit-animation: disappear 1s ease-in-out;
+            animation: disappear 1s ease-in-out;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+        button:focus > img {
+            -webkit-animation: appear 1s ease-in-out;
+            animation: appear 1s ease-in-out;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+
+        /* Tab styles */
+        .tab {
+            display: flex;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #dddcdb;
+            border: 1px solid #ccc;
+            border-bottom: none;
+        }
+        .tab button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            font-weight: bold;
+            color: #1f7ecb;
+        }
+        .tab button:hover {
+            background-color: #86c4fa;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .tab button.active {
+            background-color: #ccc;
+            color: #1f7ecb;
+        }
+
+        /* Tab content */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            background: linear-gradient(to bottom, #f2f2f2, #e0e0e0);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Animation effects */
+        @-webkit-keyframes extend {
+            0% {
+                width: 200px;
+                height: 50px;
+                border-radius: 25px;
+            }
+            100% {
+                width: 220px;
+                height: 55px;
+                border-radius: 30px;
+                background: #6fb07f;
+            }
+        }
+        @keyframes extend {
+            0% {
+                width: 200px;
+                height: 50px;
+                border-radius: 25px;
+            }
+            100% {
+                width: 220px;
+                height: 55px;
+                border-radius: 30px;
+                background: #6fb07f;
+            }
+        }
+        @-webkit-keyframes disappear {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes disappear {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @-webkit-keyframes appear {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes appear {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- title -->
+    <h1 style="text-align: center; margin-top: 20px; color: #1f7ecb; font-family: sans-serif;">The Project</h1>
+>>>>>>> origin/justin
 
     <!-- tab nav -->
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Map')">Map</button>
         <button class="tablinks" onclick="openTab(event, 'DigitalResources')">Digital Resources</button>
-        <button class="tablinks" onclick ="openTab(event,  'About')">About Us</button>
-
+        <button class="tablinks" onclick="openTab(event, 'About')">About Us</button>
     </div>
 
     <!-- map tab -->
@@ -48,37 +242,31 @@
     </div>
 
     <!-- about urban refuge tab -->
-<div id="About" class="tab-content">
-    <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">About Urban Refuge</h2>
-    <header>
-        <img src="images/urbanRefugeLogo.png" alt="Urban Refuge Logo" id="logo" class="center" width="300" height="300">
-    </header>
-    <p>
-        Put all the Urban Refuge description here or add an image.
-    </p>
-</div>
-
-
+    <div id="About" class="tab-content">
+        <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">About Urban Refuge</h2>
+        <header>
+            <img src="images/urbanRefugeLogo.png" alt="Urban Refuge Logo" id="logo" class="center" width="300" height="300">
+        </header>
+        <p>
+            Put all the Urban Refuge description here or add an image.
+        </p>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
     <script>
         // open tab
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
-            
             // hide rest
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
-            
             // remove active
             tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            
             // show current tab
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
@@ -87,8 +275,31 @@
         // default active
         document.querySelector(".tab button").click();
 
+<<<<<<< HEAD
         // Add user location function
         function addLocation() {
+=======
+        // Ensure the map code runs after the page is fully loaded
+        window.onload = function() {
+            // Map initialization
+            var map = L.map('map').setView([42.3509, -71.1089], 12);
+
+            // Base OSM layer 
+            var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // All markers
+            var singleMarker = L.marker([42.3509, -71.1089]).addTo(map);
+            var popup = singleMarker.bindPopup('This is Boston').openPopup();
+            popup.addTo(map);
+
+            var ilc = L.marker([42.427132, -71.067299]).addTo(map);
+            var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
+            popup1.addTo(map);
+
+            // Add user location function
+>>>>>>> origin/justin
             document.getElementById('addLocationBtn').addEventListener('click', function () {
                 var name = document.getElementById('locationName').value;
                 var lat = parseFloat(document.getElementById('latitude').value);
@@ -106,10 +317,10 @@
                 }
             });
         }
-        addLocation();
     </script>
 </body>
 </html>
+<<<<<<< HEAD
 
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -256,3 +467,5 @@
 
 </script>
 
+=======
+>>>>>>> origin/justin
