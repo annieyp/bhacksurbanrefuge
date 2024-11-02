@@ -1,0 +1,46 @@
+#map {
+    float: left;
+    padding: 10px;      /* creates boundary */
+    border: 1px solid #ccc;
+
+    width: 60%; 
+    height: 70vh; 
+    margin: 20px auto; 
+}
+#addLocationForm {
+    margin: 20px;
+    text-align: center;
+}
+
+/* tab style */
+.tab {
+    display: flex;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-bottom: none;
+}
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+.tab button:hover {
+    background-color: #ddd;
+}
+.tab button.active {
+    background-color: #ccc;
+}
+/* stuff in tab */
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.tab-content.active {
+    display: block;
+}
