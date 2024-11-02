@@ -4,68 +4,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Project with Tabs</title>
 
-    <link rel = "stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
     <style>
-        #map{
-            width:100%;
-            height: 100vh;
+        #map {
+            width: 80%; 
+            height: 70vh; 
+            margin: 20px auto; 
+        }
+        #addLocationForm {
+            margin: 20px;
+            text-align: center;
+        }
+        /* tab style */
+        .tab {
+            display: flex;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-bottom: none;
+        }
+        .tab button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #ccc;
+        }
+        /* stuff in tab */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div id="map"></div>
+    <!-- title-->
+    <h1 style="text-align: center; margin-top: 20px;">the project</h1>
+
+    <!-- tab nav -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Map')">Map</button>
+        <button class="tablinks" onclick="openTab(event, 'DigitalResources')">Digital Resources</button>
+        <button class="tablinks" onclick ="openTab(event,  'About')">About Us</button>
+
+    </div>
+
+    <!-- map tab -->
+    <div id="Map" class="tab-content">
+        <div id="map"></div>
+        
+        <div id="addLocationForm">
+            <h2>Add Your Own Location</h2>
+            <label for="locationName">Name:</label>
+            <input type="text" id="locationName" placeholder="Enter location name"><br><br>
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" placeholder="Enter latitude"><br><br>
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" placeholder="Enter longitude"><br><br>
+            <label for="description">Description:</label>
+            <textarea id="description" placeholder="Enter description"></textarea><br><br>
+            <button id="addLocationBtn">Add Location</button>
+        </div>
+    </div>
+
+    <!-- digital tab -->
+    <div id="DigitalResources" class="tab-content">
+        <h2>Digital Resources</h2>
+        <ul>
+            <li><a href="https://refugees.org/" target="_blank">Refugees.org</a></li>
+            <li><a href="https://www.gbfb.org/" target="_blank">Greater Boston Food Bank</a></li>
+            <li><a href="https://ymcaboston.org/mobilemarket/" target="_blank">YMCA Mobile Markets</a></li>
+        </ul>
+    </div>
+
+    <!-- about urban refuge tab -->
+<div id="About" class="tab-content">
+    <h2>About Urban Refuge</h2>
+    <p>
+        Put all the Urban Refuge description here or add an image.
+    </p>
+</div>
+
+
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+        // open tab
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            // hide rest
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            // remove active
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            // show current tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // default active
+        document.querySelector(".tab button").click();
+
+        // Map initialization
+        var map = L.map('map').setView([42.3509,-71.1089], 12);
+
+        // Base OSM layer 
+        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        osm.addTo(map);
+
+        // All markers
+        var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
+        var popup = singleMarker.bindPopup('This is Boston').openPopup();
+        popup.addTo(map);
+
+        var ilc = L.marker([42.427132, -71.067299]).addTo(map);
+        var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
+        popup1.addTo(map);
+
+        // Add user location function
+        function addLocation() {
+            document.getElementById('addLocationBtn').addEventListener('click', function () {
+                var name = document.getElementById('locationName').value;
+                var lat = parseFloat(document.getElementById('latitude').value);
+                var lng = parseFloat(document.getElementById('longitude').value);
+                var description = document.getElementById('description').value;
+
+                if (name && !isNaN(lat) && !isNaN(lng) && description) {
+                    var newMarker = L.marker([lat, lng])
+                        .bindPopup(`<b>${name}</b><br>${description}`)
+                        .addTo(map);
+
+                    alert('Location added successfully!');
+                } else {
+                    alert('Please fill in all fields with valid data.');
+                }
+            });
+        }
+        addLocation();
+    </script>
 </body>
 </html>
-
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-<script>
-    //map initialization
-    var map = L.map('map').setView([42.3509,-71.1089], 12);
-
-    //base osm layer 
-    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    osm.addTo(map)
-
-    //all markers
-    var singleMarker = L.marker([42.3509,-71.1089]).addTo(map);
-    var popup = singleMarker.bindPopup('This is Boston').openPopup();
-    popup.addTo(map);
-
-    var ilc = L.marker([42.427132, -71.067299]).addTo(map);
-    var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
-    popup1.addTo(map);
-
-    //marker groups
-    //var littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
-       // denver = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
-       // aurora = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
-        //golden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
-
-    //var citywide = L.layerGroup([littleton, denver, aurora, golden]);
-
-    //layer controller
-
-    //var baseMaps = {
-        //"Base": osm
-    //};
-    var overlayMaps = {
-    "Citywide": ilc,
-    "Greater Boston": ilc,
-    "Allston": ilc,
-    "Back Bay": singleMarker,
-    "Bay Village": ilc,
-    "Beacon Hill": ilc,
-    "Brighton": ilc,
-    "Charlestown": ilc,
-    };
-
-var layerControl = L.control.layers(overlayMaps).addTo(map);
-
-</script>
