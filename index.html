@@ -5,65 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project with Tabs</title>
-
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
-    <style>
-        #map {
-            width: 60%; 
-            height: 70vh; 
-            margin: 20px auto; 
-            float: left
-        }
-        #addLocationForm {
-            margin: 20px;
-            text-align: center;
-        }
-        /*#title {
-
-        }
-        /* tab style */
-        .tab {
-            display: flex;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            border-bottom: none;
-        }
-        .tab button {
-            background-color: inherit;
-            border: none;
-            outline: none;
-            padding: 10px 20px;
-            transition: background-color 0.3s;
-        }
-        .tab button:hover {
-            background-color: #ddd;
-        }
-        .tab button.active {
-            background-color: #ccc;
-        }
-        /* stuff in tab */
-        .tab-content {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        /* .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 40%;
-        } */
-    </style>
 </head>
 <body>
-    <!-- title-->
     <h1 style="text-align: center; margin-top: 20px; color: #1f7ecb; font-family: sans-serif;">The Refugee Project</h1>
 
     <!-- tab nav -->
@@ -216,7 +161,6 @@
     
     //location groups
     var citywide = L.layerGroup([ilc, ifsi, ric, iine, abcd, ebcc, ccb, jvs, mdbcc, ebcsk, rfc, fffpc, pc, riac, ori, kind, bhh, cp, bcrhh, uscri, maps, gbfb, bwc, nh, mira, csio, gbls, ymca, wirs, acedone, pair]);
-    
     var greaterBoston = L.layerGroup([ilc, nh, gbls, ymca]);
     var allston = L.layerGroup([bwc]);
     var backbay = L.layerGroup([]);
