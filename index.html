@@ -13,6 +13,64 @@
     <!-- title -->
     <h1>URBAN REFUGE</h1>
 
+    <style>
+        #map {
+            width: 60%; 
+            height: 70vh; 
+            margin: 20px auto; 
+            float: left;
+        }
+        #layerDropdown, #addLocationForm {
+            margin: 20px;
+            text-align: center;
+        }
+        #layerDropdown select, #addLocationForm select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 60%;
+        }
+        #addLocationForm select {
+            width: auto; /* the n ew drop down more compact*/
+            display: inline-block;
+        }
+        .tab {
+            display: flex;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-bottom: none;
+        }
+        .tab button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #ccc;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- title -->
+    <h1 style="text-align: center; margin-top: 20px; color: #1f7ecb; font-family: sans-serif;">The Refugee Project</h1>
+
     <!-- tab nav -->
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Map')">Map</button>
@@ -27,6 +85,9 @@
             <label id="selectfilter" for="layerSelect">Select a Filter:</label>
             <select id="layerSelect" onchange="changeLayer(this.value)">
                 <option value="">--Click for Options--</option>
+            <label for="layerSelect">Select a Filter:</label>
+            <select id="layerSelect" onchange="changeLayer(this.value)">
+                <option value="">--Select a Layer--</option>
                 <option value="citywide">Locations - Citywide</option>
                 <option value="greaterBoston">Locations - Greater Boston</option>
                 <option value="allston">Locations - Allston</option>
@@ -161,6 +222,7 @@
         }).addTo(map);
 
         // layers for filter
+
         var ilc = L.marker([42.427132, -71.067299]).bindPopup('<h1>Immigrant Learning Center</h1><p>Offers free English classes, citizenship application services</p><strong>781-322-9777</strong><p> 442 Main Street,<br/> Malden, MA 02148</p>'),
             ifsi = L.marker([42.268570, -71.093630]).bindPopup('<h1>Immigrant Family Services Institute</h1><p>Offers support to immigrants, including assistance with legal aid, housing, healthcare, and educational programs for children and adults to help integrate into the American society</p><strong>617-322-1348</strong><p>1626 Blue Hill Avenue,<br/> Mattapan, MA 02126</p>'),
             ric = L.marker([42.359620, -71.051800]).bindPopup('<h1>Rian Immigrant Center</h1><p>ESL classes, citizenship education, career and education coaching, computer literacy classes</p><p>One State Street,<br/> Boston, MA 02109</p>')
@@ -193,6 +255,7 @@
             acedone = L.marker([42.3299294, -71.0908219]).bindPopup('<h1>African Community Economic Development of New England (ACEDONE)</h1><p>Partners with families to help African refugees and immigrants in Boston develop a community by providing education services such as after-school tutoring, college prep, and leadership development for refugee youth</p><strong>617-708-0754</strong><p>89 South Street<br/> Suite 203,<br/> Boston, MA 02111<br/><br/> 48 John Eliot Square,<br/> Roxbury MA 02119</p>'),
             pair = L.marker([42.365624, -71.0587343]).bindPopup('<h1>Political Asylum Immigration Representation Project (PAIR)</h1><p>Works with their own and external services to provide legal services pro-bono to asylum seekers and immigrants requiring assistance additional services are extended through contact with other organizations</p><strong>617-742-9296 </strong><p>98 N Washington st<br/>#106,<br/> Boston, MA 02114</p>');
         
+
         var citywide = L.layerGroup([ilc, ifsi, ric, iine, abcd, ebcc, ccb, jvs, mdbcc, ebcsk, rfc, fffpc, pc, riac, ori, kind, bhh, cp, bcrhh, uscri, maps, gbfb, bwc, nh, mira, csio, gbls, ymca, wirs, acedone, pair]);
         var greaterBoston = L.layerGroup([ilc, nh, gbls, ymca]);
         var allston = L.layerGroup([bwc]);
