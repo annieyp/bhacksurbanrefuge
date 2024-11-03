@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+body{
+    margin: 0;
+}
+h1 {
+    text-align: center; 
+    color: rgb(21, 15, 77); 
+    font-family: "Inter", serif;
+    font-weight: 400;
+    font-size: 40px;
+}
+
+h2{
+    text-align: center; 
+    color: rgb(30, 23, 92); 
+    font-family: "Inter", serif;
+    font-weight: 400;
+}
+
+#selectfilter {
+    text-align: center; 
+    color: rgb(30, 23, 92); 
+    font-family: "Inter", serif;
+    font-weight: 300;
+}
+
+#map {
+    width: 60%; 
+    height: 70vh; 
+    margin: 20px auto; 
+    float: left;
+}
+
+select {
+    font-family: "Inter", sans-serif;
+    color: rgb(30, 23, 92);
+    font-size: 15px;
+    font-style: italic;
+}
+
+#layerDropdown, #addLocationForm {
+    margin: 20px;
+    text-align: center;
+}
+#layerDropdown select, #addLocationForm select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60%;
+}
+#addLocationForm select {
+    width: auto; /* the n ew drop down more compact*/
+    display: inline-block;
+}
+
+#addLocationForm h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#addLocationForm {
+    margin-top: 40px;
+    text-align: center; 
+    color: rgb(30, 23, 92); 
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    background-color: #f1f1f1; 
+    border-radius: 3px;
+    padding: 30px;
+    padding-top: 110px;
+    padding-bottom: 110px;
+    margin-left: 860px;
+    align-items: center;
+}
+
+#addLocationForm button {
+    font-family: "Inter", sans-serif;
+    color: rgb(30, 23, 92);
+    background-color: rgb(182, 180, 203);
+    font-weight: 400;
+    border-radius: 3px;
+    padding: 10px;
+    text-decoration: none;
+    border: none;
+}
+
+input[type=text] {
+    font-family: "Inter", serif;
+    color: rgb(30, 23, 92); 
+    font-weight: 600;
+    border-radius: 2px;
+    border: 1px solid #c6b9d3;
+}
+input[type=text]:focus {
+    border: 2px solid #9687a6;
+    outline: none;
+}
+
+textarea {
+    font-family: "Inter", serif;
+    color: rgb(30, 23, 92); 
+    font-weight: 600;
+    font-size: 13px;
+}
+
+textarea:focus {
+    border: 2px solid #9687a6;
+    outline: none;
+}
+
+.tab {
+    display: flex;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    justify-content: space-evenly;
+}
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(30, 23, 92);
+    font-style: italic;
+}
+.tab button:hover {
+    text-decoration-line: underline;
+}
+.tab button.active {
+    text-decoration-line: underline;
+}
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.tab-content.active {
+    display: block;
+}
+
