@@ -26,6 +26,7 @@
         <div class="layerDropdown">
             <label for="layerSelect" class="labelDrop">Area:</label>
             <select id="layerSelect" onchange="changeLayer(this.value)">
+                <option value="">---</option>
                 <option value="citywide">Citywide</option>
                 <option value="greaterBoston">Greater Boston</option>
                 <option value="allston">Allston</option>
@@ -54,7 +55,7 @@
             </select>
 
             <!--Service selection bar-->
-            <div class = "formSelect">
+        <div class = "formSelect">
             <label for="layerSelect" class="labelDrop">Services:</label>
             <select id="layerSelect" onchange="changeLayer(this.value)">
                 <option value="">---</option>
@@ -71,49 +72,14 @@
             </select>
 
             <!--Service selection bar-->
+        <div class = "accessSelect">
             <label for="layerSelect" class="labelDrop">Accessibility:</label>
             <select id="layerSelect" onchange="changeLayer(this.value)">
-                <option value="">--Click for Options--</option>
-                <option value="citywide">Locations - Citywide</option>
-                <option value="greaterBoston">Locations - Greater Boston</option>
-                <option value="allston">Locations - Allston</option>
-                <option value="backbay">Locations - Back Bay</option>
-                <option value="bayVillage">Locations - Bay Village</option>
-                <option value="beaconHill">Locations - Beacon Hill</option>
-                <option value="brighton">Locations - Brighton</option>
-                <option value="charlestown">Locations - Charlestown</option>
-                <option value="chinatown">Locations - Chinatown</option>
-                <option value="dorchester">Locations - Dorchester</option>
-                <option value="downtown">Locations - Downtown</option>
-                <option value="eastBoston">Locations - East Boston</option>
-                <option value="fenway">Locations - Fenway</option>
-                <option value="hydePark">Locations - Hyde Park</option>
-                <option value="jamaicaPlain">Locations - Jamaica Plain</option>
-                <option value="mattapan">Locations - Mattapan</option>
-                <option value="missionHill">Locations - Mission Hill</option>
-                <option value="northEnd">Locations - North End</option>
-                <option value="roslindale">Locations - Roslindale</option>
-                <option value="roxbury">Locations - Roxbury</option>
-                <option value="southBoston">Locations - South Boston</option>
-                <option value="southEnd">Locations - South End</option>
-                <option value="seaport">Locations - Seaport</option>
-                <option value="westEnd">Locations - West End</option>
-                <option value="westRoxbury">Locations - West Roxbury</option>
-                <option value="education">Services - Education</option>
-                <option value="legal">Services - Legal</option>
-                <option value="hs">Services - Housing/Shelter</option>
-                <option value="healthcare">Services - Healthcare</option>
-                <option value="food">Services - Food</option>
-                <option value="employment">Services - Employment</option>
-                <option value="cashAssistance">Services - Cash Assistance</option>
-                <option value="communityEd">Services - Community Education</option>
-                <option value="mentalHealth">Services - Mental Health Services</option>
-                <option value="caseManagement">Services - Case Management</option>
-                <option value="parking">Accessibility - Parking Available</option>
-                <option value="mbta">Accessibility - MBTA Accessible</option>
-                <option value="wheelchair">Accessibility - Wheelchair Accessible</option>
-                <option value="lgbtq">Accessibility - LGBTQ+ Friendly</option>
-                <option value="digitalResources">Digital Resources</option>
+                <option value="">---</option>
+                <option value="parking">Parking Available</option>
+                <option value="mbta">MBTA Accessible</option>
+                <option value="wheelchair">Wheelchair Accessible</option>
+                <option value="lgbtq">LGBTQ+ Friendly</option>
             </select>
         </div>
     
