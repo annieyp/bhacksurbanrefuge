@@ -165,10 +165,6 @@
         var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-        // base osm layer
-        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
 
         // layers for filter
         var ilc = L.marker([42.427132, -71.067299]).bindPopup('<h1>Immigrant Learning Center</h1><p>Offers free English classes, citizenship application services</p><strong>781-322-9777</strong><p> 442 Main Street,<br/> Malden, MA 02148</p>'),
@@ -228,38 +224,6 @@
         var seaport = L.layerGroup([]);
         var westEnd = L.layerGroup([]);
         var westRoxbury = L.layerGroup([rfc]);
-        // layers for filter
-        var ilc = L.marker([42.427132, -71.067299]).bindPopup('Immigrant Learning Center'),
-            ifsi = L.marker([42.268570, -71.093630]).bindPopup('Immigrant Family Services Institute'),
-            ric = L.marker([42.359620, -71.051800]).bindPopup('Rian Immigrant Center'),
-            iine = L.marker([42.352290, -71.069200]).bindPopup('International Institute of New England'),
-            abcd = L.marker([42.352921, -71.064056]).bindPopup('Action for Boston Community Development'),
-            ebcc = L.marker([42.35083689711354, -71.10820135493836]).bindPopup('East Boston Community Council'),
-            ccb = L.marker([42.3388188, -71.0513548]).bindPopup('Catholic Charities Boston'),
-            jvs = L.marker([42.3552444, -71.0569304]).bindPopup('Jewish Vocational Service'),
-            mdbcc = L.marker([42.3552444, -71.0569304]).bindPopup('MassHire Downtown Boston Career Center'),
-            ebcsk = L.marker([42.3700576, -71.040192]).bindPopup('East Boston Community Soup Kitchen'),
-            rfc = L.marker([42.2988109, -71.1299112]).bindPopup('Roslindale Food Collective'),
-            fffpc = L.marker([42.308194, -71.0620443]).bindPopup('Fair Foods: First Parish Church'),
-            pc = L.marker([42.3584799, -71.0618133]).bindPopup('Project Citizenship'),
-            riac = L.marker([42.3304191, -71.0934607]).bindPopup('Refugee & Immigrant Assistance Center (RIAC)'),
-            ori = L.marker([42.3528239, -71.0619767]).bindPopup('Mass Office for Refugees and Immigrants (ORI)'),
-            kind = L.marker([42.3584799, -71.0618133]).bindPopup('Kids in Need of Defense (KIND)'),
-            bhh = L.marker([42.3336453, -71.0727911]).bindPopup('Boston Healthcare for the Homeless'),
-            cp = L.marker([42.37535, -71.0384632]).bindPopup('Centro Presente'),
-            bcrhh = L.marker([42.3344288, -71.0740944]).bindPopup('Boston Center for Refugee Health & Human Rights'),
-            uscri = L.marker([42.3509, -71.1089]).bindPopup('U.S. Committee for Refugee and Immigrants'),
-            maps = L.marker([42.3509439, -71.1460736]).bindPopup('Massachusetts Alliance of Portuguese Speakers (MAPS)'),
-            gbfb = L.marker([42.3344051, -71.0658327]).bindPopup('Greater Boston Food Bank'),
-            bwc = L.marker([42.3552369, -71.1324104]).bindPopup('Brazilian Worker Center'),
-            nh = L.marker([42.372349, -71.0383427]).bindPopup('NeighborHealth'),
-            mira = L.marker([42.3640688, -71.0594262]).bindPopup('Massachusetts Immigrant and Refugee Advocacy Coalition'),
-            csio = L.marker([42.3518221, -71.0573484]).bindPopup('Center to Support Immigrant Organizing'),
-            gbls = L.marker([42.36417, -71.0604864]).bindPopup('Greater Boston Legal Services'),
-            ymca = L.marker([42.3509, -71.1089]).bindPopup('YMCA Mobile Markets'),
-            wirs = L.marker([42.3304191, -71.0934607]).bindPopup('Waldo Immigration and Refugee Services Inc'),
-            acedone = L.marker([42.3299294, -71.0908219]).bindPopup('African Community Economic Development of New England (ACEDONE)'),
-            pair = L.marker([42.365624, -71.0587343]).bindPopup('Political Asylum Immigration Representation Project (PAIR)');
 
         var citywide = L.layerGroup([ilc, ifsi, ric, iine, abcd, ebcc, ccb, jvs, mdbcc, ebcsk, rfc, fffpc, pc, riac, ori, kind, bhh, cp, bcrhh, uscri, maps, gbfb, bwc, nh, mira, csio, gbls, ymca, wirs, acedone, pair]);
         var greaterBoston = L.layerGroup([ilc, nh, gbls, ymca]);
