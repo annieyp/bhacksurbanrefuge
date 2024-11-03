@@ -23,7 +23,7 @@
         <!-- Dropdown for layer selection -->
 
         <!-- create individual selection bars for different categories-->
-        <div id="layerDropdown">
+        <div class="layerDropdown">
             <label for="layerSelect" class="labelDrop">Area:</label>
             <select id="layerSelect" onchange="changeLayer(this.value)">
                 <option value="citywide">Citywide</option>
@@ -54,6 +54,7 @@
             </select>
 
             <!--Service selection bar-->
+            <div class = "formSelect">
             <label for="layerSelect" class="labelDrop">Services:</label>
             <select id="layerSelect" onchange="changeLayer(this.value)">
                 <option value="">---</option>
@@ -164,37 +165,6 @@
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <!-- Link to js file for app -->
-    <script src="app.js"></script>
-
-    <!-- digital tab -->
-    <div id="DigitalResources" class="tab-content">
-        <h2>Digital Resources</h2>
-        <ul>
-            <li><a href="https://refugees.org/" target="_blank">Refugees.org</a></li>
-            <li><a href="https://www.gbfb.org/" target="_blank">Greater Boston Food Bank</a></li>
-            <li><a href="https://ymcaboston.org/mobilemarket/" target="_blank">YMCA Mobile Markets</a></li>
-        </ul>
-    </div>
-
-    <!-- about urban refuge tab -->
-    <div id="About" class="tab-content">
-        <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">About Urban Refuge</h2>
-        <header>
-            <img src="images/urbanRefugeLogo.png" alt="Urban Refuge Logo" id="logo" class="center" width="300" height="300">
-        </header>
-        <p>
-            Put all the Urban Refuge description here or add an image.
-        </p>
-    </div>
-    <div id="About" class="tab-content">
-        <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">About Urban Refuge</h2>
-        <header>
-            <img src="images/urbanRefugeLogo.png" alt="Urban Refuge Logo" id="logo" class="center" width="300" height="300">
-        </header>
-        <p>
-            Put all the Urban Refuge description here or add an image.
-        </p>
-    </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
@@ -224,8 +194,6 @@
         // default active
         document.querySelector(".tab button").click();
 
-        // map initialization
-        var map = L.map('map').setView([42.3509, -71.1089], 12);
         // map initialization
         var map = L.map('map').setView([42.3509, -71.1089], 12);
 
