@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="sidebar.js" />
+        <link rel="stylesheet" href="sidebar.css"> <!-- Link to CSS file -->
+    </head>
+    <body>
+    <!-- Link to js file for sidebar -->
+    <script src="app.js"></script>
+
+    <div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+    </div>
+
+    <button class="openbtn" onclick="openNav()">☰ Toggle Sidepanel</button>  
+    <h2>Collapsed Sidepanel</h2>
+    <p>Click on the hamburger menu/bar icon to open the sidepanel.</p>
+
+    <script>
+    function openNav() {
+    document.getElementById("mySidepanel").style.width = "250px";
+    }
+
+    function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+    }
+    </script>
+    
+    </body>
+</html>
