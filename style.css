@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 body{
     margin: 0;
 }
+
 body{
     margin: 0;
 }
-h1 {
+
+#urbanRefuge {
     text-align: center; 
     color: rgb(21, 15, 77); 
     font-family: "Inter", serif;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 40px;
     font-size: 40px;
 }
@@ -67,7 +70,7 @@ select {
 }
 
 #addLocationForm {
-    margin-top: 41px;
+    margin-top: 20px;
     text-align: center; 
     color: rgb(30, 23, 92); 
     font-family: "Inter", sans-serif;
@@ -75,8 +78,8 @@ select {
     background-color: #f1f1f1; 
     border-radius: 2px;
     padding: 30px;
-    padding-top: 85px;
-    padding-bottom: 85px;
+    padding-top: 50px;
+    padding-bottom: 30px;
     margin-left: 860px;
     align-items: center;
 }
@@ -100,6 +103,7 @@ input[type=text] {
     border: 1px solid #c6b9d3;
     padding: 5px;
 }
+
 input[type=text]:focus {
     border: 2px solid #9687a6;
     outline: none;
@@ -155,9 +159,69 @@ textarea:focus {
     display: block;
 }
 
-#layerDropdown {
-    border-radius: 2px;
-    border: none;
+.layerDropdown {
+    display: flex;
+    flex-direction: row; /* Stack label and select vertically within each .formSelect */
+    min-width: 150px;
 }
 
+.selectionBarsContainer {
+    display: flex;
+    justify-content: space-evenly; /* Evenly space elements */
+    align-items: center;
+    padding-right: 100px;
+}
 
+.labelDrop {
+    font-family: "Inter", serif;
+    color: rgb(30, 23, 92); 
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 100px;
+    padding-right: 5px;
+    padding-top: 8px;
+}
+
+#layerSelectArea, #layerSelectService, #layerSelectAccessibility {
+    padding-right: 50px;
+}
+
+.divUserOptions {
+    display: flex;
+    justify-content: space-evenly; /* Evenly space elements */
+    align-items: center;
+    padding-left: 20px;
+    margin-top: 0;
+}
+
+.formUserOptions {
+    display: flex;
+    flex-direction: column; /* Stack label and select vertically within each .formSelect */
+    min-width: 50px;
+}
+
+.labelByUser {
+    padding: 10px;
+}
+
+#buttonId {
+    padding: 10px;
+    margin-left: 25px;
+}
+
+#description {
+    padding-right: 20px;
+    padding-bottom: 0px;
+}
+
+#latitude {
+    margin-left: 10px;
+}
+
+#locationName {
+    margin-left: 18px
+}
+
+#addYourOwnLocation {
+    margin-left: 20px;
+}

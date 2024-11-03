@@ -14,7 +14,7 @@
 <body>
     <!-- title -->
     <div class="tab">
-        <h1>URBAN REFUGE</h1>
+        <h1 id="urbanRefuge">URBAN REFUGE</h1>
         <button class="tablinks" onclick="openTab(event, 'Map')">Map</button>
     </div>
 
@@ -22,6 +22,7 @@
     <div id="Map" class="tab-content">
         <!-- Dropdown for layer selection -->
         <!-- create individual selection bars for different categories-->
+    <div class="selectionBarsContainer">
         <div class="layerDropdown">
             <label for="layerSelect" class="labelDrop">Area:</label>
             <select id="layerSelectArea" onchange="changeLayer(this.value)">
@@ -71,7 +72,7 @@
 
             <!--Service selection bar-->
             <label for="layerSelect" class="labelDrop">Accessibility:</label>
-            <select id="layerSelectService" onchange="changeLayer(this.value)">
+            <select id="layerSelectAccessibility" onchange="changeLayer(this.value)">
                 <option value="">---</option>
                 <option value="parking">Parking Available</option>
                 <option value="mbta">MBTA Accessible</option>
@@ -80,12 +81,13 @@
                 <option value="digitalResources">Digital Resources</option>
             </select>
         </div>
+    </div>
     
         <div id="map"></div>
         
         <!-- Form for adding locations -->
         <div id="addLocationForm">
-            <h2>Add your own location</h2>
+            <h2 id="addYourOwnLocation">Add your own location</h2>
             <label for="locationName">Name:</label>
             <input type="text" id="locationName" placeholder="Enter location name"><br><br>
             <label for="latitude">Latitude:</label>
@@ -97,8 +99,10 @@
             
             
             <!--User added Service type-->
+    <div class = "divUserOptions">
+        <div class = "formUserOptions">
             <label for="tagSelect" class = "labelByUser">Services:</label>
-            <select id="tagSelect">
+            <select id="tagSelectService">
                 <option value="">---</option>
                 <option value="education">Education</option>
                 <option value="legal">Legal</option>
@@ -113,7 +117,7 @@
             </select>
             <!-- User added accessibility option-->
             <label for="tagSelect" class="labelByUser">Accessibility:</label>
-            <select id="tagSelect">
+            <select id="tagSelectAccess">
                 <option value="">---</option>
                 <option value="parking">Parking Available</option>
                 <option value="mbta">MBTA Accessible</option>
@@ -121,8 +125,9 @@
                 <option value="lgbtq">LGBTQ+ Friendly</option>
                 <option value="digitalResources">Digital Resources</option>
             </select>
-
-            <div id=buttonId><button id="addLocationBtn">Add Location</button></div>
+        </div>
+    </div>
+            <div id="buttonId"><button id="addLocationBtn">Add Location</button></div>
         </div>
     </div>
 
