@@ -68,10 +68,17 @@ select {
     font-family: "Inter", sans-serif;
     font-size: 13px;
     background-color: #f1f1f1; 
+<<<<<<< HEAD
     border-radius: 3px;
     padding: 30px;
     padding-top: 110px;
     padding-bottom: 110px;
+=======
+    border-radius: 2px;
+    padding: 30px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+>>>>>>> origin
     margin-left: 860px;
     align-items: center;
 }
@@ -93,6 +100,7 @@ input[type=text] {
     font-weight: 600;
     border-radius: 2px;
     border: 1px solid #c6b9d3;
+    padding: 5px;
 }
 input[type=text]:focus {
     border: 2px solid #9687a6;
@@ -150,42 +158,7 @@ textarea:focus {
 }
 
 #layerDropdown {
-    margin-bottom: 15px; /* Optional margin below the dropdown */
-    width: 500px;
+    border-radius: 2px;
+    border: none;
 }
 
-.labelDrop {
-    margin-bottom: 5px;   /* Adds spacing below the label */
-    font-weight: bold;
-}
-
-#layerSelect {
-    width: 200px;          /* Sets the width of the dropdown */
-    padding: 8px;          /* Adds padding inside the dropdown */
-    font-size: 14px;       /* Adjust font size as desired */
-    border: 1px solid #ccc;
-    border-radius: 4px;    /* Adds rounded corners */
-    appearance: none;      /* Hides default dropdown arrow for consistent styling */
-    background-color: #f9f9f9; /* Optional: Background color */
-}
-.labelByUser{
-    padding: 10px;
-    size: 60px;
-    display: block;
-}
-#submit {
-    padding: 10px;
-}
-
-#buttonID {
-    padding: 20px;               /* Adjust padding as needed */
-    display: flex;
-    justify-content: center;      /* Centers the button horizontally */
-    align-items: center;          /* Centers the button vertically */
-}
-
-#addLocationBtn {
-    padding: 10px 20px;           /* Add padding inside the button */
-    font-size: 16px;
-    cursor: pointer;
-}
