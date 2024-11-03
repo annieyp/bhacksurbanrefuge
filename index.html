@@ -8,90 +8,7 @@
 
     <!--link to js for map-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="styles.css" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <style>
-        #map {
-            width: 60%; 
-            height: 70vh; 
-            margin: 20px auto; 
-            float: left;
-        }
-        
-        #layerDropdown select, #addLocationForm select {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 230px;
-            
-        }
-        #addLocationForm select {
-            width: auto; /* the n ew drop down more compact*/
-            display: inline-block;
-        }
-        .tab {
-            display: flex;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            border-bottom: none;
-        }
-        .tab button {
-            background-color: inherit;
-            border: none;
-            outline: none;
-            padding: 10px 20px;
-            transition: background-color 0.3s;
-        }
-        .tab button:hover {
-            background-color: #ddd;
-        }
-        .tab button.active {
-            background-color: #ccc;
-        }
-        .tab-content {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-
-        .labelDrop{
-            padding: 10px;  /* Adjust the value as needed */
-            size: 60px;
-        }
-
-        .labelByUser{
-            padding: 10px;
-            size: 60px;
-            display: block;
-        }
-        #submit {
-            padding: 10px;
-        }
-
-        #buttonID {
-            padding: 20px;               /* Adjust padding as needed */
-            display: flex;
-            justify-content: center;      /* Centers the button horizontally */
-            align-items: center;          /* Centers the button vertically */
-        }
-
-        #addLocationBtn {
-            padding: 10px 20px;           /* Add padding inside the button */
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <!-- title -->
@@ -106,70 +23,10 @@
 
     <!-- map tab -->
     <div id="Map" class="tab-content">
-        <!-- Dropdown for layer selection -->
-        <div id="layerDropdown">
-
-            <!-- create individual selection bars for different categories-->
-            <label for="layerSelect" class="labelDrop">Area:</label>
-            <select id="layerSelect" onchange="changeLayer(this.value)">
-                <option value="citywide">Citywide</option>
-                <option value="greaterBoston">Greater Boston</option>
-                <option value="allston">Allston</option>
-                <option value="backbay">Back Bay</option>
-                <option value="bayVillage">Bay Village</option>
-                <option value="beaconHill">Beacon Hill</option>
-                <option value="brighton">Brighton</option>
-                <option value="charlestown">Charlestown</option>
-                <option value="chinatown">Chinatown</option>
-                <option value="dorchester">Dorchester</option>
-                <option value="downtown">Downtown</option>
-                <option value="eastBoston">East Boston</option>
-                <option value="fenway">Fenway</option>
-                <option value="hydePark">Hyde Park</option>
-                <option value="jamaicaPlain">Jamaica Plain</option>
-                <option value="mattapan">Mattapan</option>
-                <option value="missionHill">Mission Hill</option>
-                <option value="northEnd">North End</option>
-                <option value="roslindale">Roslindale</option>
-                <option value="roxbury">Roxbury</option>
-                <option value="southBoston">South Boston</option>
-                <option value="southEnd">South End</option>
-                <option value="seaport">Seaport</option>
-                <option value="westEnd">West End</option>
-                <option value="westRoxbury">West Roxbury</option>
-            </select>
-
-            <!--Service selection bar-->
-            <label for="layerSelect" class="labelDrop">Services:</label>
-            <select id="layerSelect" onchange="changeLayer(this.value)">
-                <option value="">---</option>
-                <option value="education">Education</option>
-                <option value="legal">Legal</option>
-                <option value="hs">Housing/Shelter</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="food">Food</option>
-                <option value="employment">Employment</option>
-                <option value="cashAssistance">Cash Assistance</option>
-                <option value="communityEd">Community Education</option>
-                <option value="mentalHealth">Mental Health Services</option>
-                <option value="caseManagement">Case Management</option>
-            </select>
-
-            <!--Service selection bar-->
-            <label for="layerSelect" class="labelDrop">Accessibility:</label>
-            <select id="layerSelect" onchange="changeLayer(this.value)">
-                <option value="">---</option>
-                <option value="parking">Parking Available</option>
-                <option value="mbta">MBTA Accessible</option>
-                <option value="wheelchair">Wheelchair Accessible</option>
-                <option value="lgbtq">LGBTQ+ Friendly</option>
-                <option value="digitalResources">Digital Resources</option>
-            </select>
-        </div>
+        
     
         <div id="map"></div>
         
-        <!-- Form for adding locations -->
         <!-- Form for adding locations -->
         <div id="addLocationForm">
             <h2>Add Your Own Location</h2>

@@ -149,3 +149,43 @@ textarea:focus {
     display: block;
 }
 
+#layerDropdown {
+    margin-bottom: 15px; /* Optional margin below the dropdown */
+    width: 500px;
+}
+
+.labelDrop {
+    margin-bottom: 5px;   /* Adds spacing below the label */
+    font-weight: bold;
+}
+
+#layerSelect {
+    width: 200px;          /* Sets the width of the dropdown */
+    padding: 8px;          /* Adds padding inside the dropdown */
+    font-size: 14px;       /* Adjust font size as desired */
+    border: 1px solid #ccc;
+    border-radius: 4px;    /* Adds rounded corners */
+    appearance: none;      /* Hides default dropdown arrow for consistent styling */
+    background-color: #f9f9f9; /* Optional: Background color */
+}
+.labelByUser{
+    padding: 10px;
+    size: 60px;
+    display: block;
+}
+#submit {
+    padding: 10px;
+}
+
+#buttonID {
+    padding: 20px;               /* Adjust padding as needed */
+    display: flex;
+    justify-content: center;      /* Centers the button horizontally */
+    align-items: center;          /* Centers the button vertically */
+}
+
+#addLocationBtn {
+    padding: 10px 20px;           /* Add padding inside the button */
+    font-size: 16px;
+    cursor: pointer;
+}
