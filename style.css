@@ -67,7 +67,7 @@ select {
 }
 
 #addLocationForm {
-    margin-top: 25px;
+    margin-top: 41px;
     text-align: center; 
     color: rgb(30, 23, 92); 
     font-family: "Inter", sans-serif;
@@ -75,8 +75,8 @@ select {
     background-color: #f1f1f1; 
     border-radius: 2px;
     padding: 30px;
-    padding-top: 83px;
-    padding-bottom: 83px;
+    padding-top: 85px;
+    padding-bottom: 85px;
     margin-left: 860px;
     align-items: center;
 }
@@ -132,7 +132,7 @@ textarea:focus {
     border: none;
     outline: none;
     padding: 10px 20px;
-    transition: background-color 0.3s;
+    transition: 0.3s;
     font-family: "Inter", sans-serif;
     font-size: 20px;
     font-weight: 300;
@@ -159,4 +159,5 @@ textarea:focus {
     border-radius: 2px;
     border: none;
 }
+
 
