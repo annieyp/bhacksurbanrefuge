@@ -8,10 +8,11 @@
 
     <!--link to js for map-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <!-- tab nav -->
+    <!-- title -->
     <div class="tab">
         <h1>URBAN REFUGE</h1>
         <button class="tablinks" onclick="openTab(event, 'Map')">Map</button>
@@ -21,9 +22,9 @@
     <div id="Map" class="tab-content">
         
         <!-- Dropdown for layer selection -->
-        <div id="layerDropdown">
 
-            <!-- create individual selection bars for different categories-->
+        <!-- create individual selection bars for different categories-->
+        <div id="layerDropdown">
             <label for="layerSelect" class="labelDrop">Area:</label>
             <select id="layerSelect" onchange="changeLayer(this.value)">
                 <option value="citywide">Citywide</option>
@@ -72,20 +73,55 @@
             <!--Service selection bar-->
             <label for="layerSelect" class="labelDrop">Accessibility:</label>
             <select id="layerSelect" onchange="changeLayer(this.value)">
-                <option value="">---</option>
-                <option value="parking">Parking Available</option>
-                <option value="mbta">MBTA Accessible</option>
-                <option value="wheelchair">Wheelchair Accessible</option>
-                <option value="lgbtq">LGBTQ+ Friendly</option>
+                <option value="">--Click for Options--</option>
+                <option value="citywide">Locations - Citywide</option>
+                <option value="greaterBoston">Locations - Greater Boston</option>
+                <option value="allston">Locations - Allston</option>
+                <option value="backbay">Locations - Back Bay</option>
+                <option value="bayVillage">Locations - Bay Village</option>
+                <option value="beaconHill">Locations - Beacon Hill</option>
+                <option value="brighton">Locations - Brighton</option>
+                <option value="charlestown">Locations - Charlestown</option>
+                <option value="chinatown">Locations - Chinatown</option>
+                <option value="dorchester">Locations - Dorchester</option>
+                <option value="downtown">Locations - Downtown</option>
+                <option value="eastBoston">Locations - East Boston</option>
+                <option value="fenway">Locations - Fenway</option>
+                <option value="hydePark">Locations - Hyde Park</option>
+                <option value="jamaicaPlain">Locations - Jamaica Plain</option>
+                <option value="mattapan">Locations - Mattapan</option>
+                <option value="missionHill">Locations - Mission Hill</option>
+                <option value="northEnd">Locations - North End</option>
+                <option value="roslindale">Locations - Roslindale</option>
+                <option value="roxbury">Locations - Roxbury</option>
+                <option value="southBoston">Locations - South Boston</option>
+                <option value="southEnd">Locations - South End</option>
+                <option value="seaport">Locations - Seaport</option>
+                <option value="westEnd">Locations - West End</option>
+                <option value="westRoxbury">Locations - West Roxbury</option>
+                <option value="education">Services - Education</option>
+                <option value="legal">Services - Legal</option>
+                <option value="hs">Services - Housing/Shelter</option>
+                <option value="healthcare">Services - Healthcare</option>
+                <option value="food">Services - Food</option>
+                <option value="employment">Services - Employment</option>
+                <option value="cashAssistance">Services - Cash Assistance</option>
+                <option value="communityEd">Services - Community Education</option>
+                <option value="mentalHealth">Services - Mental Health Services</option>
+                <option value="caseManagement">Services - Case Management</option>
+                <option value="parking">Accessibility - Parking Available</option>
+                <option value="mbta">Accessibility - MBTA Accessible</option>
+                <option value="wheelchair">Accessibility - Wheelchair Accessible</option>
+                <option value="lgbtq">Accessibility - LGBTQ+ Friendly</option>
                 <option value="digitalResources">Digital Resources</option>
             </select>
         </div>
-        
+    
         <div id="map"></div>
         
         <!-- Form for adding locations -->
         <div id="addLocationForm">
-            <h2>Add Your Own Location</h2>
+            <h2>Add your own location</h2>
             <label for="locationName">Name:</label>
             <input type="text" id="locationName" placeholder="Enter location name"><br><br>
             <label for="latitude">Latitude:</label>
@@ -126,6 +162,41 @@
         </div>
     </div>
 
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Link to js file for app -->
+    <script src="app.js"></script>
+
+    <!-- digital tab -->
+    <div id="DigitalResources" class="tab-content">
+        <h2>Digital Resources</h2>
+        <ul>
+            <li><a href="https://refugees.org/" target="_blank">Refugees.org</a></li>
+            <li><a href="https://www.gbfb.org/" target="_blank">Greater Boston Food Bank</a></li>
+            <li><a href="https://ymcaboston.org/mobilemarket/" target="_blank">YMCA Mobile Markets</a></li>
+        </ul>
+    </div>
+
+    <!-- about urban refuge tab -->
+    <div id="About" class="tab-content">
+        <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">About Urban Refuge</h2>
+        <header>
+            <img src="images/urbanRefugeLogo.png" alt="Urban Refuge Logo" id="logo" class="center" width="300" height="300">
+        </header>
+        <p>
+            Put all the Urban Refuge description here or add an image.
+        </p>
+    </div>
+    <div id="About" class="tab-content">
+        <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">About Urban Refuge</h2>
+        <header>
+            <img src="images/urbanRefugeLogo.png" alt="Urban Refuge Logo" id="logo" class="center" width="300" height="300">
+        </header>
+        <p>
+            Put all the Urban Refuge description here or add an image.
+        </p>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <script>
@@ -156,13 +227,7 @@
 
         // map initialization
         var map = L.map('map').setView([42.3509, -71.1089], 12);
-        // map initialization
-        var map = L.map('map').setView([42.3509, -71.1089], 12);
-
-        // base osm layer
-        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        
         // base osm layer
         var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

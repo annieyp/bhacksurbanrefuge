@@ -2,11 +2,15 @@
 body{
     margin: 0;
 }
+body{
+    margin: 0;
+}
 h1 {
     text-align: center; 
     color: rgb(21, 15, 77); 
     font-family: "Inter", serif;
     font-weight: 400;
+    font-size: 40px;
     font-size: 40px;
 }
 
@@ -38,11 +42,12 @@ select {
     font-style: italic;
 }
 
-#layerDropdown, #addLocationForm {
+.layerDropdown, .addLocationForm {
     margin: 20px;
     text-align: center;
+    justify-content: space-evenly;
 }
-#layerDropdown select, #addLocationForm select {
+.layerDropdown select, #addLocationForm select {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
