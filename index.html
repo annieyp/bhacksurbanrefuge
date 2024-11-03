@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project with Tabs</title>
-    <link rel="stylesheet" href="style.css" />
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1 style="text-align: center; margin-top: 20px; color: #1f7ecb; font-family: sans-serif;">The Refugee Project</h1>
+    <!-- title -->
+    <h1>URBAN REFUGE</h1>
 
     <!-- tab nav -->
     <div class="tab">
@@ -20,10 +22,58 @@
 
     <!-- map tab -->
     <div id="Map" class="tab-content">
+        <!-- Dropdown for layer selection -->
+        <div id="layerDropdown">
+            <label id="selectfilter" for="layerSelect">Select a Filter:</label>
+            <select id="layerSelect" onchange="changeLayer(this.value)">
+                <option value="">--Select a Filter--</option>
+                <option value="citywide">Locations - Citywide</option>
+                <option value="greaterBoston">Locations - Greater Boston</option>
+                <option value="allston">Locations - Allston</option>
+                <option value="backbay">Locations - Back Bay</option>
+                <option value="bayVillage">Locations - Bay Village</option>
+                <option value="beaconHill">Locations - Beacon Hill</option>
+                <option value="brighton">Locations - Brighton</option>
+                <option value="charlestown">Locations - Charlestown</option>
+                <option value="chinatown">Locations - Chinatown</option>
+                <option value="dorchester">Locations - Dorchester</option>
+                <option value="downtown">Locations - Downtown</option>
+                <option value="eastBoston">Locations - East Boston</option>
+                <option value="fenway">Locations - Fenway</option>
+                <option value="hydePark">Locations - Hyde Park</option>
+                <option value="jamaicaPlain">Locations - Jamaica Plain</option>
+                <option value="mattapan">Locations - Mattapan</option>
+                <option value="missionHill">Locations - Mission Hill</option>
+                <option value="northEnd">Locations - North End</option>
+                <option value="roslindale">Locations - Roslindale</option>
+                <option value="roxbury">Locations - Roxbury</option>
+                <option value="southBoston">Locations - South Boston</option>
+                <option value="southEnd">Locations - South End</option>
+                <option value="seaport">Locations - Seaport</option>
+                <option value="westEnd">Locations - West End</option>
+                <option value="westRoxbury">Locations - West Roxbury</option>
+                <option value="education">Services - Education</option>
+                <option value="legal">Services - Legal</option>
+                <option value="hs">Services - Housing/Shelter</option>
+                <option value="healthcare">Services - Healthcare</option>
+                <option value="food">Services - Food</option>
+                <option value="employment">Services - Employment</option>
+                <option value="cashAssistance">Services - Cash Assistance</option>
+                <option value="communityEd">Services - Community Education</option>
+                <option value="mentalHealth">Services - Mental Health Services</option>
+                <option value="caseManagement">Services - Case Management</option>
+                <option value="parking">Accessibility - Parking Available</option>
+                <option value="mbta">Accessibility - MBTA Accessible</option>
+                <option value="wheelchair">Accessibility - Wheelchair Accessible</option>
+                <option value="lgbtq">Accessibility - LGBTQ+ Friendly</option>
+                <option value="digitalResources">Digital Resources</option>
+            </select>
+        </div>
         <div id="map"></div>
         
+        <!-- Form for adding locations -->
         <div id="addLocationForm">
-            <h2 style="text-align: center; color: #86c4fa; font-family: sans-serif;">Add Your Own Location</h2>
+            <h3 style="text-align: center; color: rgb(21, 15, 77); font-family: sans-serif;">Add your own location</h3>
             <label for="locationName">Name:</label>
             <input type="text" id="locationName" placeholder="Enter location name"><br><br>
             <label for="latitude">Latitude:</label>
@@ -32,6 +82,24 @@
             <input type="text" id="longitude" placeholder="Enter longitude"><br><br>
             <label for="description">Description:</label>
             <textarea id="description" placeholder="Enter description"></textarea><br><br>
+            <label for="tagSelect">Tag:</label>
+            <select id="tagSelect">
+                <option value="education">Education</option>
+                <option value="legal">Legal</option>
+                <option value="hs">Housing/Shelter</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="food">Food</option>
+                <option value="employment">Employment</option>
+                <option value="cashAssistance">Cash Assistance</option>
+                <option value="communityEd">Community Education</option>
+                <option value="mentalHealth">Mental Health Services</option>
+                <option value="caseManagement">Case Management</option>
+                <option value="parking">Parking Available</option>
+                <option value="mbta">MBTA Accessible</option>
+                <option value="wheelchair">Wheelchair Accessible</option>
+                <option value="lgbtq">LGBTQ+ Friendly</option>
+                <option value="digitalResources">Digital Resources</option>
+            </select><br><br>
             <button id="addLocationBtn">Add Location</button>
         </div>
     </div>
@@ -58,20 +126,24 @@
     </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
     <script>
         // open tab
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
+            
             // hide rest
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
+            
             // remove active
             tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
+            
             // show current tab
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
@@ -80,35 +152,152 @@
         // default active
         document.querySelector(".tab button").click();
 
-        // Ensure the map code runs after the page is fully loaded
-        window.onload = function() {
-            // Map initialization
-            var map = L.map('map').setView([42.3509, -71.1089], 12);
+        // map initialization
+        var map = L.map('map').setView([42.3509, -71.1089], 12);
 
-            // Base OSM layer 
-            var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+        // base osm layer
+        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            // All markers
-            var singleMarker = L.marker([42.3509, -71.1089]).addTo(map);
-            var popup = singleMarker.bindPopup('This is Boston').openPopup();
-            popup.addTo(map);
+        // layers for filter
+        var ilc = L.marker([42.427132, -71.067299]).bindPopup('Immigrant Learning Center'),
+            ifsi = L.marker([42.268570, -71.093630]).bindPopup('Immigrant Family Services Institute'),
+            ric = L.marker([42.359620, -71.051800]).bindPopup('Rian Immigrant Center'),
+            iine = L.marker([42.352290, -71.069200]).bindPopup('International Institute of New England'),
+            abcd = L.marker([42.352921, -71.064056]).bindPopup('Action for Boston Community Development'),
+            ebcc = L.marker([42.35083689711354, -71.10820135493836]).bindPopup('East Boston Community Council'),
+            ccb = L.marker([42.3388188, -71.0513548]).bindPopup('Catholic Charities Boston'),
+            jvs = L.marker([42.3552444, -71.0569304]).bindPopup('Jewish Vocational Service'),
+            mdbcc = L.marker([42.3552444, -71.0569304]).bindPopup('MassHire Downtown Boston Career Center'),
+            ebcsk = L.marker([42.3700576, -71.040192]).bindPopup('East Boston Community Soup Kitchen'),
+            rfc = L.marker([42.2988109, -71.1299112]).bindPopup('Roslindale Food Collective'),
+            fffpc = L.marker([42.308194, -71.0620443]).bindPopup('Fair Foods: First Parish Church'),
+            pc = L.marker([42.3584799, -71.0618133]).bindPopup('Project Citizenship'),
+            riac = L.marker([42.3304191, -71.0934607]).bindPopup('Refugee & Immigrant Assistance Center (RIAC)'),
+            ori = L.marker([42.3528239, -71.0619767]).bindPopup('Mass Office for Refugees and Immigrants (ORI)'),
+            kind = L.marker([42.3584799, -71.0618133]).bindPopup('Kids in Need of Defense (KIND)'),
+            bhh = L.marker([42.3336453, -71.0727911]).bindPopup('Boston Healthcare for the Homeless'),
+            cp = L.marker([42.37535, -71.0384632]).bindPopup('Centro Presente'),
+            bcrhh = L.marker([42.3344288, -71.0740944]).bindPopup('Boston Center for Refugee Health & Human Rights'),
+            uscri = L.marker([42.3509, -71.1089]).bindPopup('U.S. Committee for Refugee and Immigrants'),
+            maps = L.marker([42.3509439, -71.1460736]).bindPopup('Massachusetts Alliance of Portuguese Speakers (MAPS)'),
+            gbfb = L.marker([42.3344051, -71.0658327]).bindPopup('Greater Boston Food Bank'),
+            bwc = L.marker([42.3552369, -71.1324104]).bindPopup('Brazilian Worker Center'),
+            nh = L.marker([42.372349, -71.0383427]).bindPopup('NeighborHealth'),
+            mira = L.marker([42.3640688, -71.0594262]).bindPopup('Massachusetts Immigrant and Refugee Advocacy Coalition'),
+            csio = L.marker([42.3518221, -71.0573484]).bindPopup('Center to Support Immigrant Organizing'),
+            gbls = L.marker([42.36417, -71.0604864]).bindPopup('Greater Boston Legal Services'),
+            ymca = L.marker([42.3509, -71.1089]).bindPopup('YMCA Mobile Markets'),
+            wirs = L.marker([42.3304191, -71.0934607]).bindPopup('Waldo Immigration and Refugee Services Inc'),
+            acedone = L.marker([42.3299294, -71.0908219]).bindPopup('African Community Economic Development of New England (ACEDONE)'),
+            pair = L.marker([42.365624, -71.0587343]).bindPopup('Political Asylum Immigration Representation Project (PAIR)');
 
-            var ilc = L.marker([42.427132, -71.067299]).addTo(map);
-            var popup1 = ilc.bindPopup('This is The Immigrant Learning Center').openPopup();
-            popup1.addTo(map);
+        var citywide = L.layerGroup([ilc, ifsi, ric, iine, abcd, ebcc, ccb, jvs, mdbcc, ebcsk, rfc, fffpc, pc, riac, ori, kind, bhh, cp, bcrhh, uscri, maps, gbfb, bwc, nh, mira, csio, gbls, ymca, wirs, acedone, pair]);
+        var greaterBoston = L.layerGroup([ilc, nh, gbls, ymca]);
+        var allston = L.layerGroup([bwc]);
+        var backbay = L.layerGroup([]);
+        var bayVillage = L.layerGroup([]);
+        var beaconHill = L.layerGroup([]);
+        var brighton = L.layerGroup([maps]);
+        var charlestown = L.layerGroup([]);
+        var chinatown = L.layerGroup([]);
+        var dorchester = L.layerGroup([fffpc]);
+        var downtown = L.layerGroup([ric, iine, abcd, mdbcc, pc, ori, kind, csio]);
+        var eastBoston = L.layerGroup([ebcc, ebcsk, cp, nh, mira]);
+        var fenway = L.layerGroup([]);
+        var hydePark = L.layerGroup([]);
+        var jamaicaPlain = L.layerGroup([]);
+        var mattapan = L.layerGroup([ifsi]);
+        var missionHill = L.layerGroup([]);
+        var northEnd = L.layerGroup([pair]);
+        var roslindale = L.layerGroup([rfc]);
+        var roxbury = L.layerGroup([riac, bcrhh, wirs, acedone]);
+        var southBoston = L.layerGroup([ccb, gbfb, acedone]);
+        var southEnd = L.layerGroup([bhh, bcrhh, gbfb, nh, mira]);
+        var seaport = L.layerGroup([]);
+        var westEnd = L.layerGroup([]);
+        var westRoxbury = L.layerGroup([rfc]);
 
-            // Add user location function
+        var education = L.layerGroup([ilc, ifsi, ric, iine, abcd, ebcc, ccb, ori, cp, bwc, mira, wirs, acedone]);
+        var legal = L.layerGroup([ifsi, ric, iine, abcd, ebcc, ccb, pc, riac, ori, kind, cp, bcrhh, uscri, maps, mira, gbls, pair]);
+        var hs = L.layerGroup([ifsi, iine, abcd, ccb, ori, wirs]);
+        var healthcare = L.layerGroup([ifsi, abcd, ccb, ori, wirs]);
+        var food = L.layerGroup([iine, abcd, ccb, ebcsk, rfc, fffpc, gbfb, ymca]);
+        var employment = L.layerGroup([iine, abcd, jvs, mdbcc, ori, bcrhh, maps, bwc]);
+        var cashAssistance = L.layerGroup([abcd]);
+        var communityEd = L.layerGroup([riac, ori, cp, bcrhh, csio]);
+        var mentalHealth = L.layerGroup([bcrhh, uscri, maps]);
+        var caseManagement = L.layerGroup([bcrhh]);
+
+        var parking = L.layerGroup([ilc, rfc]);
+        var mbta = L.layerGroup([ilc, iine, ebcsk, fffpc, pc, riac, ori, kind, bhh, cp, bcrhh, maps, bwc, nh, mira, csio]);
+        var wheelchair = L.layerGroup([jvs, mdbcc]);
+        var lgbtq = L.layerGroup([cp, maps]);
+        var digitalResources = L.layerGroup([uscri, gbfb, ymca]);
+
+        var layers = {
+            citywide: citywide,
+            greaterBoston: greaterBoston,
+            allston: allston,
+            backbay: backbay,
+            bayVillage: bayVillage,
+            beaconHill: beaconHill,
+            brighton: brighton,
+            charlestown: charlestown,
+            chinatown: chinatown,
+            dorchester: dorchester,
+            downtown: downtown,
+            eastBoston: eastBoston,
+            fenway: fenway,
+            hydePark: hydePark,
+            jamaicaPlain: jamaicaPlain,
+            mattapan: mattapan,
+            missionHill: missionHill,
+            northEnd: northEnd,
+            roslindale: roslindale,
+            roxbury: roxbury,
+            southBoston: southBoston,
+            southEnd: southEnd,
+            seaport: seaport,
+            westEnd: westEnd,
+            westRoxbury: westRoxbury,
+            education: education,
+            legal: legal,
+            hs: hs,
+            healthcare: healthcare,
+            food: food,
+            employment: employment,
+            cashAssistance: cashAssistance,
+            communityEd: communityEd,
+            mentalHealth: mentalHealth,
+            caseManagement: caseManagement,
+            parking: parking,
+            mbta: mbta,
+            wheelchair: wheelchair,
+            lgbtq: lgbtq,
+            digitalResources: digitalResources
+        };
+
+        function changeLayer(layerName) {
+            Object.values(layers).forEach(layer => map.removeLayer(layer));
+            if (layerName && layers[layerName]) {
+                layers[layerName].addTo(map);
+            }
+        }
+
+        //  user location function
+        function addLocation() {
             document.getElementById('addLocationBtn').addEventListener('click', function () {
                 var name = document.getElementById('locationName').value;
                 var lat = parseFloat(document.getElementById('latitude').value);
                 var lng = parseFloat(document.getElementById('longitude').value);
                 var description = document.getElementById('description').value;
+                var tag = document.getElementById('tagSelect').value;
 
                 if (name && !isNaN(lat) && !isNaN(lng) && description) {
                     var newMarker = L.marker([lat, lng])
-                        .bindPopup(`<b>${name}</b><br>${description}`)
+                        .bindPopup(`<b>${name}</b><br>${description}<br>Tag: ${tag}`)
                         .addTo(map);
 
                     alert('Location added successfully!');
@@ -117,6 +306,7 @@
                 }
             });
         }
+        addLocation();
     </script>
 </body>
 </html>
